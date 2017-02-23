@@ -1,11 +1,13 @@
 {
 	"id": "nodebb-plugin-custom-follow",
+	"name": "Custom Follow",
+	"description": "Add a checkboxes to customize category follows",
 	"url": "https://github.com/btwebb/nodebb-plugin-custom-follow",
 	"library": "./library.js",
 	"hooks": [
-		{ "hook": "action:user.create", "method": "onUserCreate"},
 		{ "hook": "static:app.load", "method": "init" },
-		{ "hook": "filter:admin.header.build", "method": "addAdminNavigation" }
+		{ "hook": "filter:admin.header.build", "method": "addAdminNavigation" },
+		{ "hook": "filter:category.get", "method": "getCategories"}
 	],
 	"staticDirs": {
 		"static": "./static"
