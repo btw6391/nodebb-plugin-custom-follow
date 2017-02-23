@@ -32,7 +32,7 @@ plugin.getCategories = function(params, callback) {
 };
 
 function renderAdmin(req, res, next) {
-	res.render('admin/follow', {fields:fields});
+	res.render('admin/follow', {});
 }
 
 module.exports = plugin;
