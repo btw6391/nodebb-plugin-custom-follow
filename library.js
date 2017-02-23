@@ -1,23 +1,23 @@
 "use strict";
 
-var Categories = module.parent.require('./categories'),
+var controllers = require('./lib/controllers'),
 	categories = false,
 	plugin = {};
 
 plugin.init = function(params, callback) {
-	var app = params.router,
-		middleware = params.middleware,
-		controllers = params.controllers;
-		
-	app.get('/admin/follow', middleware.admin.buildHeader, renderAdmin);
-	app.get('/api/admin/follow', renderAdmin);
+	var router = params.router,
+		hostMiddleware = params.middleware,
+		hostControllers = params.controllers;
+
+	router.get('/admin/plugins/customfollow', hostMiddleware.admin.buildHeader, controllers.renderAdminPage);
+	router.get('/api/admin/plugins/customfollow', controllers.renderAdminPage);
 
 	callback();
 };
 
 plugin.addAdminNavigation = function(header, callback) {
 	header.plugins.push({
-		route: '/follow',
+		route: '/plugins/customfollow',
 		icon: 'fa-tint',
 		name: 'Custom Follow'
 	});
@@ -26,13 +26,10 @@ plugin.addAdminNavigation = function(header, callback) {
 };
 
 plugin.getCategories = function(params, callback) {
+	console.log("Testing...!");
 	categories = params;
 	console.log(categories);
     callback(null, params);
 };
-
-function renderAdmin(req, res, next) {
-	res.render('admin/follow', {});
-}
 
 module.exports = plugin;
