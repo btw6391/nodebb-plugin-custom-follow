@@ -1,0 +1,28 @@
+{
+  "name": "nodebb-plugin-custom-follow",
+  "version": "0.1.0",
+  "description": "Custom follow settings for NodeBB",
+  "main": "library.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/btw6391/nodebb-plugin-custom-follow"
+  },
+  "keywords": [
+    "nodebb",
+    "plugin",
+    "custom",
+    "follow"
+  ],
+  "author": {
+    "name": "btw6391",
+    "email": "btw6391@gmail.com"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/btw6391/nodebb-plugin-custom-follow/issues"
+  },
+  "readmeFilename": "README.md",
+  "nbbpm": {
+    "compatibility": "^1.0.0"
+  }
+}

@@ -1,0 +1,23 @@
+{
+	"id": "nodebb-plugin-custom-follow",
+	"url": "https://github.com/btwebb/nodebb-plugin-custom-follow",
+	"library": "./library.js",
+	"hooks": [
+		{ "hook": "action:user.create", "method": "onUserCreate"},
+		{ "hook": "static:app.load", "method": "init" },
+		{ "hook": "filter:admin.header.build", "method": "addAdminNavigation" }
+	],
+	"staticDirs": {
+		"static": "./static"
+	},
+	"less": [
+		"static/style.less"
+	],
+	"scripts": [
+		"static/lib/main.js"
+	],
+	"acpScripts": [
+		"static/lib/admin.js"
+	],
+	"templates": "static/templates"
+}
