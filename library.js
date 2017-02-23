@@ -12,6 +12,7 @@ plugin.init = function(params, callback) {
 	router.get('/admin/plugins/customfollow', hostMiddleware.admin.buildHeader, controllers.renderAdminPage);
 	router.get('/api/admin/plugins/customfollow', controllers.renderAdminPage);
 
+	plugin.reloadSettings();
 	callback();
 };
 
@@ -25,11 +26,13 @@ plugin.addAdminNavigation = function(header, callback) {
 	callback(null, header);
 };
 
-plugin.getCategories = function(params, callback) {
-	console.log("Testing...!");
-	categories = params;
-	console.log(categories);
-    callback(null, params);
+plugin.reloadSettings = function(data) {
+	if (!data || data.plugin === 'customfollow') {
+		meta.settings.get('customfollow', function(err, settings) {
+			plugin._settings = _.extend(plugin._settings || {}, settings);
+			winston.verbose('[plugins/customfollow] Settings reloaded.');
+		});
+	}
 };
 
 module.exports = plugin;
